@@ -1,5 +1,28 @@
 .secondSection {
-    img {
-        width: 100%;
+    ul {
+        height: 56px; //避免被盖掉
+        display: flex;
+        justify-content: space-around;
+
+        li {
+            color: white;
+            list-style: none;
+        }
     }
+
+    section {
+        padding: 16px;
+
+        h2 {
+            color: white;
+        }
+
+        img {
+            width: 100%;
+            margin-top: 16px;
+            border-radius: 6px;
+        }
+    }
+
+
 }
