@@ -1,20 +1,68 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./styles.module.scss";
 import CartoonImage from "../../assets/cartoon.jpg";
 import MovieImage from "../../assets/movie.png";
 import LifeImage from "../../assets/life.jpg";
 import FoodImage from "../../assets/food.jpg";
+import classNames from "classnames";
+
+
 const SecondSection: FC = () => {
+    const [activeTab, setActiveTab] = useState<string>("cartoon");
+
+    const tabs = [
+        {
+            key: 'cartoon',
+            title: '动画',
+        },
+        {
+            key: 'movie',
+            title: '电影',
+        },
+        {
+            key: 'life',
+            title: '生活',
+        },
+        {
+            key: 'food',
+            title: '美食'
+        }
+    ]
     return (
         <div className={styles.secondSection}>
             <h1>SecondSection</h1>
             {/* Tabs */}
             <ul>
-                <li>动画</li>
-                <li>美食</li>
-                <li>电影</li>
-                <li>生活</li>
+                {tabs.map(tab => (
+                    <li key={tab.key} onClick={() => setActiveTab(tab.key)}>
+                        <span>{tab.title}</span>
+                        {activeTab === tab.key && <span className={classNames(styles.line, { [styles.visible]: activeTab })}></span>}
+                    </li>
+                ))}
             </ul>
+
+            {/* {tabs.map(tab => (
+                    <li key={tab.key} onClick={() => setActiveTab(tab.key)}>
+                        <span>{tab.title}</span>
+                        {activeTab === tab.key && <span className={styles.line} />}
+                    </li>
+                ))
+            } */}
+
+            {/* <ul>
+                <li>
+                    <span>动画</span>
+                    {activeTab === "cartoon" && <span className={styles.line} />}
+                </li>
+                <li><span>美食</span>
+                    {activeTab === "food" && <span className={styles.line} />}
+                </li>
+                <li><span>电影</span>
+                    {activeTab === "movie" && <span className={styles.line} />}
+                </li>
+                <li><span>生活</span></li>
+                {activeTab === "life" && <span className={styles.line} />}
+            </ul> */}
 
             {/* Tabs */}
             <div>
@@ -35,7 +83,7 @@ const SecondSection: FC = () => {
                     <img src={LifeImage} alt="Life" />
                 </section>
             </div>
-        </div>
+        </div >
     )
 }
 
