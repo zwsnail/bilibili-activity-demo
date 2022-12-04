@@ -77,7 +77,7 @@ const SecondSection: FC = () => {
             //     }
             // })
             //另一种写法
-            const sectionNodes = secondSectionRef.current.querySelectorAll('.section');
+            const sectionNodes = secondSectionRef.current.querySelectorAll('section');
             //sectionNodes 是 list 要转变成 array
             Array.from(sectionNodes).forEach((sectionEl: Element) => {
                 const top = sectionEl.getBoundingClientRect().top;
