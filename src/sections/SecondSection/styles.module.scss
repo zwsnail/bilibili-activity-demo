@@ -1,8 +1,21 @@
 .secondSection {
+    padding-top: 56px;
+    position: relative;
+
+
     ul {
+        position: absolute;
+        top: 0;
+        width: 100%;
         height: 56px; //避免被盖掉
         display: flex;
+        align-items: center;
         justify-content: space-around;
+        background: #e36c3f;
+
+        &.isFixed {
+            position: fixed;
+        }
 
         li {
             position: relative;
@@ -11,12 +24,12 @@
 
             .line {
                 position: absolute;
-                bottom: 30px;
+                bottom: -8px;
                 left: 50%;
                 transform: translateX(-50%);
                 height: 4px;
                 width: 100%;
-                background: rgb(164, 28, 28);
+                background: green;
                 opacity: 0;
                 transition: opacity .3s;
 
@@ -28,6 +41,7 @@
     }
 
     section {
+        scroll-margin: 56px;
         padding: 16px;
 
         h2 {
@@ -41,5 +55,38 @@
         }
     }
 
+    .btnWrapper {
+        position: fixed;
+        bottom: 0;
+        height: 64px;
+        width: 100%;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        opacity: 0;
+        transform: translateY(64px);
+        transition: opacity .3s, transform .3s; //记得有个 逗号！
+        z-index: -1; //为了防止在 opacity 为 0 的时候，虽然是透明的，也可以点击按钮，触发点击事件
+
+        &.visible {
+            opacity: 1;
+            z-index: 1;
+            transform: translateY(0); //可以有一个从底往上弹出来的效果
+        }
+
+        img {
+            width: 100px;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            background: #fb7299;
+        }
+    }
 
 }
